@@ -1,0 +1,17 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:views="clr-namespace:BotMaker.Views"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="BotMaker.Views.InstructionView">
+	<Border BorderBrush="#DDD" BorderThickness="1" CornerRadius="8" Background="White" Padding="15" Width="600" Height="500">
+		<Grid>
+			<ProgressBar Value="{Binding ProgressValue}"
+						 Maximum="{Binding ProgressMax}"
+						 Height="10" Margin="0,0,0,10" VerticalAlignment="Top"/>
+			
+			<views:StepView DataContext="{Binding}"/>
+		</Grid>
+	</Border>
+</UserControl>
