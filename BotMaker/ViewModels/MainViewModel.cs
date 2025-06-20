@@ -6,12 +6,12 @@ namespace BotMaker.ViewModels;
 
 public partial class MainViewModel : ViewModelBase
 {
+    [ObservableProperty]
+    private object? _currentView;
+
     [RelayCommand]
     private void OpenInstruction()
     {
-        var instructionView = new InstructionView
-        {
-            DataContext = new InstructionViewModel()
-        };
+        CurrentView = new InstructionView { DataContext = new InstructionViewModel() };
     }
 }

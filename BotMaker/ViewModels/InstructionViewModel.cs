@@ -38,42 +38,42 @@ namespace BotMaker.ViewModels
                     Number = 1,
                     Title = "Поиск BotFather",
                     Description = "В поисковой строке Telegram введите BotFather, после чего перейдите в чат, обратите внимание, что официальный BotFather помечен галочкой.",
-                    ImagePath = new Bitmap("Assets/Steps/step1.png")
+                    ImagePath = "Assets/Steps/step1.png"
                 },
                 new ()
                 {
                     Number = 2,
                     Title = "Запуск BotFather",
                     Description = "Запустите бота командой /start.",
-                    ImagePath = new Bitmap("Assets/Steps/step2.png")
+                    ImagePath = "Assets/Steps/step2.png"
                 },
                 new ()
                 {
                     Number = 3,
                     Title = "Создание нового бота",
                     Description = "В меню выберите команду /newbot либо введите вручную.",
-                    ImagePath = new Bitmap("Assets/Steps/step3.png")
+                    ImagePath = "Assets/Steps/step3.png"
                 },
                 new ()
                 {
                     Number = 4,
                     Title = "Создание имени бота",
                     Description = "Введите имя вашего бота.",
-                    ImagePath = new Bitmap("Assets/Steps/step4.png")
+                    ImagePath = "Assets/Steps/step4.png"
                 },
                 new ()
                 {
                     Number = 5,
                     Title = "Создание уникального тэга бота",
                     Description = "Введите уникальный тэг вашего бота, учтите, что тэг должен заканчиваться словом Bot или bot.",
-                    ImagePath = new Bitmap("Assets/Steps/step5.png")
+                    ImagePath = "Assets/Steps/step5.png"
                 },
                 new ()
                 {
                     Number = 6,
                     Title = "Получение ключа API",
                     Description = "Поздравляем, вы успешно зарегистрировали нового бота, вставьте ключ HTTP API  в поле ввода в приложении BotMaker.",
-                    ImagePath = new Bitmap("Assets/Steps/step6.png")
+                    ImagePath = "Assets/Steps/step6.png"
                 }
             };
         }
