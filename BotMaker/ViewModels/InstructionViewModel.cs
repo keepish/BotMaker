@@ -1,8 +1,7 @@
 ﻿using BotMaker.Models;
+using BotMaker.ServiceLayer.Services;
 using BotMaker.Services;
-using BotMaker.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.Generic;
 
@@ -10,6 +9,7 @@ namespace BotMaker.ViewModels
 {
     public partial class InstructionViewModel : ViewModelBase
     {
+
         private readonly INavigationService _navigation;
         public int ProgressValue => CurrentStepIndex + 1;
         public int ProgressMax => Steps.Count;
@@ -35,7 +35,7 @@ namespace BotMaker.ViewModels
 
         private void InitializeSteps()
         {
-            Steps = new List<InstructionStep>
+            var APIInfoSteps = new List<InstructionStep>
             {
                 new ()
                 {
@@ -76,7 +76,7 @@ namespace BotMaker.ViewModels
                 {
                     Number = 6,
                     Title = "Получение ключа API",
-                    Description = "",
+                    Description = "Поздравляем, вы успешно зарегистрировали нового бота, вставьте ключ HTTP API  в поле ввода в приложении BotMaker.",
                     ImagePath = "Assets/Steps/step6.png"
                 }
             };
@@ -98,9 +98,14 @@ namespace BotMaker.ViewModels
                     ImagePath = "Assets/Steps/user_info_step2.png"
                 },
             };
+
+            if (CurrentUserService.CurrentInstruction == "api")
+                Steps = APIInfoSteps;
+            else
+                Steps = UserInfoSteps;
         }
 
-        partial void OnCurrentStepIndexChanged( int value)
+        partial void OnCurrentStepIndexChanged(int value)
         {
             OnPropertyChanged(nameof(CurrentStep));
             OnPropertyChanged(nameof(ShowPreviousButton));
@@ -125,7 +130,7 @@ namespace BotMaker.ViewModels
         [RelayCommand]
         private void CloseInstruction()
         {
-            _navigation.NavigateTo<StartView>();
+            _navigation.GoBack();
         }
     }
 }

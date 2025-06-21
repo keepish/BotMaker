@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotMaker", "BotMaker\BotMaker.csproj", "{2DEBA3FD-2F05-40FB-B696-5318E06536B4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotMaker.Android", "BotMaker.Android\BotMaker.Android.csproj", "{D1B56922-3B1F-4C80-BD66-25A307F0C3C6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotMaker.Desktop", "BotMaker.Desktop\BotMaker.Desktop.csproj", "{F7286C28-83E9-4ABF-895D-1440D82895AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotMaker.ServiceLayer", "ServiceLayer\BotMaker.ServiceLayer.csproj", "{F3AA8F02-3FAD-41CC-885D-591EC111C8E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{F7286C28-83E9-4ABF-895D-1440D82895AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7286C28-83E9-4ABF-895D-1440D82895AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7286C28-83E9-4ABF-895D-1440D82895AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3AA8F02-3FAD-41CC-885D-591EC111C8E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3AA8F02-3FAD-41CC-885D-591EC111C8E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3AA8F02-3FAD-41CC-885D-591EC111C8E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3AA8F02-3FAD-41CC-885D-591EC111C8E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
