@@ -1,0 +1,26 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="BotMaker.Views.StartView">
+	<Grid>
+		<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+			<TextBlock Name="ApiTextBlock" Text="Для создания бота введите ключ API" FontSize="20" Margin="10,10,10,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+			<Button Content="Как получить ключ API?"
+					Command="{Binding OpenInstructionCommand}"
+					Background="Transparent" BorderThickness="0"
+					Foreground="#0078D7" Cursor="Hand"
+					HorizontalAlignment="Right"
+					VerticalAlignment="Top"
+					FontSize="10"/>
+			<StackPanel Orientation="Horizontal">
+				<TextBox Watermark="Ваш ключ API" Width="250" Height="10" FontSize="15"/>
+				<Button Content="Создать бота" FontSize="15"
+						Command="{Binding OpenStartViewCommand}" Margin="10"
+						HorizontalAlignment="Center"
+						VerticalAlignment="Center"/>
+			</StackPanel>
+		</StackPanel>
+	</Grid>
+</UserControl>

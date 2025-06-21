@@ -1,0 +1,60 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="BotMaker.Views.StepView">
+	<Grid RowDefinitions="Auto,Auto,*,Auto" Margin="20">
+		<!-- Заголовок -->
+		<TextBlock Grid.Row="0" Foreground="Black"
+                   Text="{Binding CurrentStep.Title}"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   Margin="0,0,0,20"
+                   HorizontalAlignment="Center"
+                   TextWrapping="Wrap"/>
+
+		<!-- Изображение -->
+		<Image Grid.Row="1"
+               Source="{Binding CurrentStep.Image}"
+               MaxWidth="400"
+               MaxHeight="300"
+               HorizontalAlignment="Center"
+               Margin="0,0,0,20"/>
+
+		<!-- Описание с возможностью прокрутки -->
+		<ScrollViewer Grid.Row="2"
+                      VerticalScrollBarVisibility="Auto"
+                      Margin="0,0,0,20">
+			<TextBlock Text="{Binding CurrentStep.Description}"
+                       TextWrapping="Wrap" Foreground="Black"
+                       HorizontalAlignment="Center"/>
+		</ScrollViewer>
+
+		<!-- Фиксированные кнопки внизу -->
+		<Grid Grid.Row="3"
+              VerticalAlignment="Bottom"
+              HorizontalAlignment="Stretch">
+			<StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom">
+				<Button Content="←" Foreground="Black" BorderBrush="Gray"
+                        Command="{Binding PreviousStepCommand}"
+                        IsVisible="{Binding ShowPreviousButton}"
+                        Margin="0,0,10,0"
+                        Width="80"/>
+
+				<Button Content="Закрыть" Foreground="Black" BorderBrush="Gray"
+                        Command="{Binding CloseInstructionCommand}"
+                        Margin="10,0"
+                        Width="80"/>
+
+				<Button Content="→" Foreground="Black" BorderBrush="Gray"
+                        Command="{Binding NextStepCommand}"
+                        IsVisible="{Binding ShowNextButton}"
+                        Margin="10,0,0,0"
+                        Width="80"/>
+			</StackPanel>
+		</Grid>
+	</Grid>
+</UserControl>
