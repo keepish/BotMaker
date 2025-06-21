@@ -1,26 +1,8 @@
-<UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="clr-namespace:BotMaker.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="300"
-             x:Class="BotMaker.Views.MainView"
-             x:DataType="vm:MainViewModel">
-  <Design.DataContext>
-    <!-- This only sets the DataContext for the previewer in an IDE,
-         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-    <vm:MainViewModel />
-  </Design.DataContext>
-	<ContentControl Name="MainContent" HorizontalAlignment="Center" VerticalAlignment="Center">
-		<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-			<TextBlock Text="Для создания бота введите ключ API" FontSize="20" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-			<StackPanel Orientation="Horizontal">
-				<TextBox Watermark="Ваш ключ API" Width="250" Height="10" FontSize="15"/>
-				<Button Content="Создать бота" FontSize="15"
-						Command="{Binding OpenStartViewCommand}" Margin="10"
-						HorizontalAlignment="Center"
-						VerticalAlignment="Center"/>
-			</StackPanel>
-		</StackPanel>
-	</ContentControl>
-</UserControl>
+<ContentControl	xmlns="https://github.com/avaloniaui"
+				xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+				xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+				xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+				mc:Ignorable="d"
+				x:Class="BotMaker.Views.MainView"
+				x:Name="MainContent">
+</ContentControl>

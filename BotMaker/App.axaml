@@ -6,5 +6,6 @@
 
     <Application.Styles>
         <FluentTheme />
-    </Application.Styles>
+		<StyleInclude Source="avares://BotMaker/Styles.axaml"/>
+	</Application.Styles>
 </Application>
