@@ -4,57 +4,82 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" 
              x:Class="BotMaker.Views.StepView">
-	<Grid RowDefinitions="Auto,Auto,*,Auto" Margin="20">
-		<!-- Заголовок -->
-		<TextBlock Grid.Row="0" Foreground="Black"
-                   Text="{Binding CurrentStep.Title}"
-                   FontSize="18"
-                   FontWeight="Bold"
-                   Margin="0,0,0,20"
-                   HorizontalAlignment="Center"
-                   TextWrapping="Wrap"/>
+	<Grid RowDefinitions="Auto, Auto, *, Auto" Margin="20">
+		<!-- Заголовок и кнопка закрыть -->
+		<Grid Grid.Row="0" Margin="0,0,0,20">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="Auto"/>
+			</Grid.ColumnDefinitions>
+
+			<TextBlock Grid.Column="0" Grid.ColumnSpan="2"
+					   Text="{Binding CurrentStep.Title}"
+					   FontSize="18"
+					   FontWeight="Bold"
+					   HorizontalAlignment="Center"
+					   VerticalAlignment="Center"
+					   TextWrapping="Wrap"
+					   Foreground="Black"/>
+
+			<Button Grid.Column="1"
+					Content="✕"
+					Foreground="Black"
+					BorderBrush="Gray"
+					Command="{Binding CloseInstructionCommand}"
+					HorizontalAlignment="Right"
+					VerticalAlignment="Center"
+					Width="40"
+					Height="40"
+					FontSize="16"
+					Background="Transparent"/>
+		</Grid>
 
 		<!-- Изображение -->
 		<Image Grid.Row="1"
-               Source="{Binding CurrentStep.Image}"
-               MaxWidth="400"
-               MaxHeight="300"
-               HorizontalAlignment="Center"
-               Margin="0,0,0,20"/>
+			   Source="{Binding CurrentStep.Image}"
+			   MaxWidth="400"
+			   MaxHeight="300"
+			   HorizontalAlignment="Center"
+			   VerticalAlignment="Center"
+			   Margin="0,0,0,20"/>
 
-		<!-- Описание с возможностью прокрутки -->
-		<ScrollViewer Grid.Row="2"
-                      VerticalScrollBarVisibility="Auto"
-                      Margin="0,0,0,20">
-			<TextBlock Text="{Binding CurrentStep.Description}"
-                       TextWrapping="Wrap" Foreground="Black"
-                       HorizontalAlignment="Center"/>
-		</ScrollViewer>
+		<!-- Область для описания и кнопок -->
+		<Grid Grid.Row="2" RowDefinitions="*, Auto">
+			<!-- Описание (занимает всё доступное пространство) -->
+			<ScrollViewer Grid.Row="0"
+						  VerticalScrollBarVisibility="Auto"
+						  Margin="0,0,0,0">
+				<TextBlock Text="{Binding CurrentStep.Description}"
+						   TextWrapping="Wrap"
+						   Foreground="Black"
+						   HorizontalAlignment="Center"/>
+			</ScrollViewer>
 
-		<!-- Фиксированные кнопки внизу -->
-		<Grid Grid.Row="3"
-              VerticalAlignment="Bottom"
-              HorizontalAlignment="Stretch">
-			<StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Bottom">
-				<Button Content="←" Foreground="Black" BorderBrush="Gray"
-                        Command="{Binding PreviousStepCommand}"
-                        IsVisible="{Binding ShowPreviousButton}"
-                        Margin="0,0,10,0"
-                        Width="80"/>
+			<!-- Кнопки навигации (фиксированы внизу) -->
+			<Border Grid.Row="1"
+					Background="White"
+					Padding="10"
+					BorderBrush="#DDD"
+					BorderThickness="0,1,0,0">
+				<StackPanel Orientation="Horizontal"
+							HorizontalAlignment="Center">
+					<Button Content="←"
+							Foreground="Black"
+							BorderBrush="Gray"
+							Command="{Binding PreviousStepCommand}"
+							IsEnabled="{Binding CanGoPrevious}"
+							Margin="0,0,10,0"
+							Width="80"/>
 
-				<Button Content="Закрыть" Foreground="Black" BorderBrush="Gray"
-                        Command="{Binding CloseInstructionCommand}"
-                        Margin="10,0"
-                        Width="80"/>
-
-				<Button Content="→" Foreground="Black" BorderBrush="Gray"
-                        Command="{Binding NextStepCommand}"
-                        IsVisible="{Binding ShowNextButton}"
-                        Margin="10,0,0,0"
-                        Width="80"/>
-			</StackPanel>
+					<Button Content="→"
+							Foreground="Black"
+							BorderBrush="Gray"
+							Command="{Binding NextStepCommand}"
+							IsEnabled="{Binding CanGoNext}"
+							Margin="10,0,0,0"
+							Width="80"/>
+				</StackPanel>
+			</Border>
 		</Grid>
 	</Grid>
 </UserControl>
