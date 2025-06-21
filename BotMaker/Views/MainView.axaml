@@ -5,4 +5,8 @@
 				mc:Ignorable="d"
 				x:Class="BotMaker.Views.MainView"
 				x:Name="MainContent">
+
+	<ContentControl.Background>
+		<ImageBrush Stretch="UniformToFill" Source="/Assets/background.png"/>
+	</ContentControl.Background>
 </ContentControl>

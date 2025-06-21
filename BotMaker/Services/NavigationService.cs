@@ -6,7 +6,7 @@ namespace BotMaker.Services
 {
     public class NavigationService : INavigationService
     {
-        private readonly Stack<Control> _navigationStack = new();
+        private readonly Stack<Control> _navigationStack = new Stack<Control>();
         private ContentControl _currentContentControl;
 
         public NavigationService(ContentControl initialContentControl)
@@ -16,6 +16,11 @@ namespace BotMaker.Services
 
         public void NavigateTo<TView>() where TView : Control, new()
         {
+            if (_currentContentControl.Content != null)
+            {
+                _navigationStack.Push((Control)_currentContentControl.Content);
+            }
+
             var view = new TView();
 
             var viewModelTypeName = typeof(TView).FullName!.Replace("View", "ViewModel");

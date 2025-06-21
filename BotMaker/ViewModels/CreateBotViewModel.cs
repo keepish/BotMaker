@@ -1,9 +1,11 @@
 ﻿using Avalonia.Controls;
 using BotMaker.Models;
+using BotMaker.ServiceLayer.Services;
 using BotMaker.Services;
 using BotMaker.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using ServiceLayer.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -16,8 +18,11 @@ namespace BotMaker.ViewModels
     {
         private readonly INavigationService _navigation;
 
+        private readonly UserService _userService;
+        private readonly BotsService _botService;
+
         [ObservableProperty]
-        private string? _telegramUserId = null;
+        private string? _token = "8071173139:AAFEQwQbH92MhM0zy_otQh4uZI4PzApQ4-Y";
 
         [ObservableProperty]
         private string _companyName = "";
@@ -60,6 +65,12 @@ namespace BotMaker.ViewModels
         [ObservableProperty]
         private bool _addNotifications = false;
 
+        public CreateBotViewModel(INavigationService navigation)
+        {
+            _userService = new UserService();
+            _botService = new BotsService();
+            _navigation = navigation ?? throw new ArgumentNullException(nameof(navigation));
+        }
 
         [RelayCommand]
         public void AddFAQItem()
@@ -88,8 +99,14 @@ namespace BotMaker.ViewModels
         }
 
         [RelayCommand]
-        public async Task GenerateScript(Window window)
+        public async Task StartGenerateBot(Window window)
         {
+            if (!CurrentUserService.CurrentUser.IsVip && CurrentUserService.CurrentUser.Bots.Count > 3)
+            {
+                MessageBox("Лимит ботов превышен!", window);
+                return;
+            }
+
             var exeFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             var scriptFolderPath = Path.Combine(exeFolder, "BotTest");
             var scriptFilePath = Path.Combine(scriptFolderPath, "bot.py");
@@ -99,7 +116,7 @@ namespace BotMaker.ViewModels
 
             if (string.IsNullOrWhiteSpace(targetFolder))
             {
-                Console.WriteLine("Папка не выбрана");
+                MessageBox("Папка не выбрана", window);
                 return;
             }
 
@@ -108,39 +125,38 @@ namespace BotMaker.ViewModels
 
             CopyDirectory(scriptFolderPath, targetFolder);
             File.WriteAllText(scriptFilePath, string.Empty);
-            Console.WriteLine("Ваш чат-бот успешно создан!");
+            var result = await _botService.AddBotAsync(CurrentUserService.CurrentUser.UserId, Token, "Bot_" + CompanyName);
+
+            if (result == true)
+                MessageBox("Ваш чат-бот успешно создан!", window);
+            else
+                MessageBox("Бот с таким именем уже зарегестрирован за вами", window);
+        }
+
+        private async Task MessageBox(string message, Window window)
+        {
+            var dialog = new Window
+            {
+                Title = "Информация",
+                Width = 300,
+                Height = 150,
+                Content = new TextBlock
+                {
+                    Text = message,
+                    VerticalAlignment = Avalonia.Layout.VerticalAlignment.Center,
+                    HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
+                    TextWrapping = Avalonia.Media.TextWrapping.Wrap
+                }
+            };
+
+            await dialog.ShowDialog(window);
         }
 
         private string GenerateScriptContent()
         {
-            return $@"from aiogram import Bot, Dispatcher, types
-from aiogram.filters import Command
-from aiogram.enums import ParseMode
-import asyncio
-
-API_TOKEN = '8071173139:AAFEQwQbH92MhM0zy_otQh4uZI4PzApQ4-Y'
-
-bot = Bot(token=API_TOKEN)
-dp = Dispatcher()
-
-@dp.message(Command(commands=['start', 'help']))
-async def send_welcome(message: types.Message):
-    await message.reply(
-        ""Здравствуйте! 👋\n""
-        f""Добро пожаловать в компанию '{CompanyName}'! Мы рады видеть вас здесь. Чем можем помочь?""
-    )
-
-@dp.message()
-async def echo(message: types.Message):
-    await message.answer(""Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время."")
-
-async def main():
-    await dp.start_polling(bot)
-
-if __name__ == ""__main__"":
-    asyncio.run(main())
-";
+            return "";
         }
+
         private void CopyDirectory(string sourceDir, string targetDir)
         {
             Directory.CreateDirectory(targetDir);
@@ -162,6 +178,12 @@ if __name__ == ""__main__"":
 
         [RelayCommand]
         public void OpenUserIdInstruction()
+        {
+
+        }
+
+        [RelayCommand]
+        private void OpenApiKeyInstruction()
         {
             _navigation.NavigateTo<InstructionView>();
         }

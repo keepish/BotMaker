@@ -4,43 +4,42 @@
 
 	<Style>
 		<Style.Resources>
-			<!-- Основная цветовая палитра -->
-			<Color x:Key="PrimaryColor">#4A6FA5</Color>
-			<!-- Успокаивающий синий -->
-			<Color x:Key="PrimaryLightColor">#6B8CBE</Color>
-			<!-- Светлее на 20% -->
-			<Color x:Key="PrimaryDarkColor">#3A5A8C</Color>
-			<!-- Темнее на 15% -->
+			<Color x:Key="PrimaryColor">#000000</Color>
+			<!-- Чистый черный -->
+			<Color x:Key="PrimaryLightColor">#333333</Color>
+			<!-- Темно-серый -->
+			<Color x:Key="PrimaryDarkColor">#000000</Color>
+			<!-- Черный (еще темнее) -->
 
-			<Color x:Key="SecondaryColor">#6BBBA1</Color>
-			<!-- Мятно-бирюзовый -->
-			<Color x:Key="AccentColor">#FF7E5A</Color>
-			<!-- Теплый коралловый -->
+			<Color x:Key="SecondaryColor">#666666</Color>
+			<!-- Средний серый -->
+			<Color x:Key="AccentColor">#1A1A1A</Color>
+			<!-- Сверхтемный серый -->
 
 			<!-- Текст и фон -->
-			<Color x:Key="PrimaryTextColor">#2D3748</Color>
-			<!-- Темно-серый/синий -->
-			<Color x:Key="SecondaryTextColor">#4A5568</Color>
-			<!-- Серый для второстепенного текста -->
+			<Color x:Key="PrimaryTextColor">#000000</Color>
+			<!-- Черный текст -->
+			<Color x:Key="SecondaryTextColor">#444444</Color>
+			<!-- Темно-серый текст -->
 			<Color x:Key="LightTextColor">#FFFFFF</Color>
-			<!-- Белый для темного фона -->
+			<!-- Белый текст -->
 
-			<Color x:Key="BackgroundColor">#F8FAFC</Color>
-			<!-- Очень светлый серо-голубой -->
-			<Color x:Key="CardBackground">#FFFFFF</Color>
-			<!-- Чисто белый для карточек -->
-			<Color x:Key="BorderColor">#E2E8F0</Color>
-			<!-- Светлая серая рамка -->
+			<Color x:Key="BackgroundColor">#FFFFFF</Color>
+			<!-- Чистый белый фон -->
+			<Color x:Key="CardBackground">#F8F8F8</Color>
+			<!-- Слегка серый фон карточек -->
+			<Color x:Key="BorderColor">#E0E0E0</Color>
+			<!-- Очень светлый серый для границ -->
 
 			<!-- Состояния -->
-			<Color x:Key="SuccessColor">#48BB78</Color>
-			<!-- Зеленый для успеха -->
-			<Color x:Key="ErrorColor">#F56565</Color>
-			<!-- Мягкий красный -->
-			<Color x:Key="WarningColor">#ED8936</Color>
-			<!-- Оранжевый -->
-			<Color x:Key="InfoColor">#4299E1</Color>
-			<!-- Голубой -->
+			<Color x:Key="SuccessColor">#1A3A1A</Color>
+			<!-- Очень темный зеленый -->
+			<Color x:Key="ErrorColor">#3A1A1A</Color>
+			<!-- Очень темный красный -->
+			<Color x:Key="WarningColor">#3A3A1A</Color>
+			<!-- Очень темный желтый -->
+			<Color x:Key="InfoColor">#1A1A3A</Color>
+			<!-- Очень темный синий -->
 		</Style.Resources>
 	</Style>
 
@@ -69,11 +68,17 @@
 		</Border>
 	</Design.PreviewWith>
 
+	<Style>
+		<Style.Resources>
+			<FontFamily x:Key="MainFont">avares://BotMaker/Assets/Fonts/Benzin-Bold.ttf#Benzin</FontFamily>
+		</Style.Resources>
+	</Style>
+
 	<!-- Базовые стили -->
 	<Style Selector="Window">
 		<Setter Property="Background" Value="{DynamicResource BackgroundColor}"/>
 		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"/>
-		<Setter Property="FontFamily" Value="Segoe UI, Inter, Arial, sans-serif"/>
+		<Setter Property="FontFamily" Value="{DynamicResource MainFont}"/>
 		<Setter Property="FontSize" Value="15"/>
 	</Style>
 
@@ -87,11 +92,12 @@
 		<Setter Property="CornerRadius" Value="6"/>
 		<Setter Property="Cursor" Value="Hand"/>
 		<Setter Property="HorizontalContentAlignment" Value="Center"/>
-		<Setter Property="VerticalContentAlignment" Value="Center"/>
+		<Setter Property="VerticalContentAlignment" Value="Bottom"/>
 	</Style>
 
 	<Style Selector="Button:hover">
-		<Setter Property="Background" Value="{DynamicResource PrimaryLightColor}"/>
+		<Setter Property="Background" Value="{DynamicResource PrimaryColor}"/>
+		<Setter Property="Foreground" Value="{DynamicResource LightTextColor}"/>
 	</Style>
 
 	<Style Selector="Button:pressed">
@@ -114,6 +120,7 @@
 		<Setter Property="CornerRadius" Value="6"/>
 		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"/>
 		<Setter Property="SelectionBrush" Value="{DynamicResource PrimaryColor}40"/>
+		<Setter Property="TextAlignment" Value="Center"/>
 		<!-- 25% прозрачности -->
 	</Style>
 
@@ -126,11 +133,11 @@
 	<Style Selector="CheckBox">
 		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"/>
 		<Setter Property="FontWeight" Value="Normal"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
 	</Style>
 
 	<Style Selector="CheckBox:checked /template/ ContentPresenter">
-		<Setter Property="Background" Value="{DynamicResource PrimaryColor}"/>
-		<Setter Property="BorderBrush" Value="{DynamicResource PrimaryColor}"/>
+		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"/>
 	</Style>
 
 	<!-- Карточки -->
