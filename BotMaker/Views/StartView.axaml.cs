@@ -2,11 +2,11 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace BotMaker;
+namespace BotMaker.Views;
 
-public partial class AcquaintanceView : UserControl
+public partial class StartView : UserControl
 {
-    public AcquaintanceView()
+    public StartView()
     {
         InitializeComponent();
     }

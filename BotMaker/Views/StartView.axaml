@@ -1,0 +1,27 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:vm="clr-namespace:BotMaker.ViewModels"
+             x:Class="BotMaker.Views.StartView"
+			 x:DataType="vm:StartViewModel">
+	<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+		<TextBlock Text="Для создания функционала бота введите токен вашего зарегистрированного бота" FontSize="20" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+		<Button Content="Как получить ключ API?"
+					Command="{Binding OpenApiKeyInstructionCommand}"
+					Background="Transparent" BorderThickness="0"
+					Foreground="#0078D7" Cursor="Hand"
+					HorizontalAlignment="Right"
+					VerticalAlignment="Top"
+					FontSize="10"/>
+		<StackPanel Orientation="Horizontal">
+			<TextBox Text="{Binding Token}" Watermark="Ваш ключ API" Width="320" Height="10" FontSize="15"/>
+			<Button Content="Создать функционал для бота" FontSize="15"
+					Command="{Binding OpenCreateBotViewCommand}" Margin="10"
+					HorizontalAlignment="Center"
+					VerticalAlignment="Center"/>
+			<Label Content="{Binding ErrorMessage}" Foreground="Red"/>
+		</StackPanel>
+	</StackPanel>
+</UserControl>
