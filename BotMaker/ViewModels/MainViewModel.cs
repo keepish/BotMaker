@@ -9,9 +9,18 @@ public partial class MainViewModel : ViewModelBase
     [ObservableProperty]
     private object? _currentView;
 
+    public MainViewModel()
+    {
+        CurrentView = new StartView { DataContext = this };
+    }
+
     [RelayCommand]
     private void OpenInstruction()
     {
         CurrentView = new InstructionView { DataContext = new InstructionViewModel() };
     }
+
+    [RelayCommand]
+    private void OpenStartView()
+    { }
 }

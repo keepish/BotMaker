@@ -1,5 +1,4 @@
-﻿using Avalonia.Media.Imaging;
-using BotMaker.Classes;
+﻿using BotMaker.Classes;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.Generic;
@@ -34,7 +33,7 @@ namespace BotMaker.ViewModels
             Steps = new List<InstructionStep>
             {
                 new ()
-                { 
+                {
                     Number = 1,
                     Title = "Поиск BotFather",
                     Description = "В поисковой строке Telegram введите BotFather, после чего перейдите в чат, обратите внимание, что официальный BotFather помечен галочкой.",
@@ -76,6 +75,14 @@ namespace BotMaker.ViewModels
                     ImagePath = "Assets/Steps/step6.png"
                 }
             };
+        }
+
+        partial void OnCurrentStepIndexChanged( int value)
+        {
+            OnPropertyChanged(nameof(CurrentStep));
+            OnPropertyChanged(nameof(ShowPreviousButton));
+            OnPropertyChanged(nameof(ShowNextButton));
+            OnPropertyChanged(nameof(ProgressValue));
         }
 
         [RelayCommand]

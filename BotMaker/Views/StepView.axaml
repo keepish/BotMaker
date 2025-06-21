@@ -4,24 +4,57 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="BotMaker.Views.StepView">
-	<Grid RowDefinitions="Auto,*,Auto" Margin="20">
-		<TextBlock Grid.Row="0"
-				   Text="{Binding CurrentStep.Title}"
-				   FontSize="18" FontWeight="Bold"/>
+	<Grid RowDefinitions="Auto,Auto,*,Auto" Margin="20">
+		<!-- Заголовок -->
+		<TextBlock Grid.Row="0" Foreground="Black"
+                   Text="{Binding CurrentStep.Title}"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   Margin="0,0,0,20"
+                   HorizontalAlignment="Center"
+                   TextWrapping="Wrap"/>
 
-		<Grid Grid.Row="1">
-			<Image Source="{Binding CurrentStep.Image}"
-				   Width="300" Height="300"
-				   HorizontalAlignment="Center"/>
+		<!-- Изображение -->
+		<Image Grid.Row="1"
+               Source="{Binding CurrentStep.Image}"
+               MaxWidth="400"
+               MaxHeight="300"
+               HorizontalAlignment="Center"
+               Margin="0,0,0,20"/>
+
+		<!-- Описание с возможностью прокрутки -->
+		<ScrollViewer Grid.Row="2"
+                      VerticalScrollBarVisibility="Auto"
+                      Margin="0,0,0,20">
 			<TextBlock Text="{Binding CurrentStep.Description}"
-					   TextWrapping="Wrap"
-					   Margin="0,20,0,0"/>
-		</Grid>
+                       TextWrapping="Wrap" Foreground="Black"
+                       HorizontalAlignment="Center"/>
+		</ScrollViewer>
 
-		<StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-			<Button Content="←" Command="{Binding PreviousStepCommand}" IsVisible="{Binding ShowPreviousButton}"/>
-			<Button Content="Закрыть" Command="{Binding CloseInstructionCommand}" Margin="20,0"/>
-			<Button Content="→" Command="{Binding NextStepCommand}" IsVisible="{Binding ShowNextButton}"/>
-		</StackPanel>
+		<!-- Фиксированные кнопки внизу -->
+		<Grid Grid.Row="3"
+              VerticalAlignment="Bottom"
+              HorizontalAlignment="Stretch">
+			<StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom">
+				<Button Content="←" Foreground="Black" BorderBrush="Gray"
+                        Command="{Binding PreviousStepCommand}"
+                        IsVisible="{Binding ShowPreviousButton}"
+                        Margin="0,0,10,0"
+                        Width="80"/>
+
+				<Button Content="Закрыть" Foreground="Black" BorderBrush="Gray"
+                        Command="{Binding CloseInstructionCommand}"
+                        Margin="10,0"
+                        Width="80"/>
+
+				<Button Content="→" Foreground="Black" BorderBrush="Gray"
+                        Command="{Binding NextStepCommand}"
+                        IsVisible="{Binding ShowNextButton}"
+                        Margin="10,0,0,0"
+                        Width="80"/>
+			</StackPanel>
+		</Grid>
 	</Grid>
 </UserControl>
