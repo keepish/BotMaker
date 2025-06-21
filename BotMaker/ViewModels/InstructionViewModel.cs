@@ -10,6 +10,7 @@ namespace BotMaker.ViewModels
 {
     public partial class InstructionViewModel : ViewModelBase
     {
+
         private readonly INavigationService _navigation;
         public int ProgressValue => CurrentStepIndex + 1;
         public int ProgressMax => Steps.Count;
@@ -76,7 +77,7 @@ namespace BotMaker.ViewModels
                 {
                     Number = 6,
                     Title = "Получение ключа API",
-                    Description = "",
+                    Description = "Поздравляем, вы успешно зарегистрировали нового бота, вставьте ключ HTTP API  в поле ввода в приложении BotMaker.",
                     ImagePath = "Assets/Steps/step6.png"
                 }
             };
@@ -125,7 +126,7 @@ namespace BotMaker.ViewModels
         [RelayCommand]
         private void CloseInstruction()
         {
-            _navigation.NavigateTo<StartView>();
+            _navigation.GoBack();
         }
     }
 }

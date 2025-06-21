@@ -29,4 +29,8 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.6" />
     <PackageReference Include="Telegram.Bot" Version="22.5.1" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ServiceLayer\BotMaker.ServiceLayer.csproj" />
+  </ItemGroup>
 </Project>

@@ -30,8 +30,7 @@
 					VerticalAlignment="Center"
 					Width="40"
 					Height="40"
-					FontSize="16"
-					Background="Transparent"/>
+					FontSize="16"/>
 		</Grid>
 
 		<!-- Изображение -->
