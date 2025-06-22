@@ -11,5 +11,10 @@
         Width="1200"
         Height="550"
         WindowStartupLocation="CenterScreen">
+
+	<Window.Background>
+		<ImageBrush Stretch="UniformToFill" Source="/Assets/background.png"/>
+	</Window.Background>
+	
 	<ContentControl x:Name="MainContent"/>
 </Window>

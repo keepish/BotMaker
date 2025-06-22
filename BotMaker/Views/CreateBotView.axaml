@@ -46,7 +46,7 @@
 			<!-- FAQ Section -->
 			<Border Grid.Row="2" BorderBrush="{DynamicResource BorderColor}" BorderThickness="0,1,0,0" Padding="0,10" Margin="0,0,0,20">
 				<StackPanel HorizontalAlignment="Center" Spacing="10">
-					<CheckBox Content="Добавить FAQ в бота?" IsChecked="{Binding AddFAQ}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+					<CheckBox Content="Добавить FAQ в бота?" IsChecked="{Binding AddFAQ}" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
 					<StackPanel Spacing="10" Margin="10,10,10,0" IsVisible="{Binding AddFAQ}">
 						<Grid ColumnDefinitions="Auto,1*" RowDefinitions="Auto,Auto" VerticalAlignment="Center">

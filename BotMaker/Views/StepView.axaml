@@ -5,7 +5,6 @@
              mc:Ignorable="d" 
              x:Class="BotMaker.Views.StepView">
 	<Grid RowDefinitions="Auto, Auto, *, Auto" Margin="20">
-		<!-- Заголовок и кнопка закрыть -->
 		<Grid Grid.Row="0" Margin="0,0,0,20">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*"/>
@@ -31,7 +30,6 @@
 					FontSize="16"/>
 		</Grid>
 
-		<!-- Изображение -->
 		<Image Grid.Row="1"
 			   Source="{Binding CurrentStep.Image}"
 			   MaxWidth="400"
@@ -39,9 +37,7 @@
 			   HorizontalAlignment="Center"
 			   VerticalAlignment="Center"
 			   Margin="0,0,0,20"/>
-		<!-- Область для описания и кнопок -->
 		<Grid Grid.Row="2" RowDefinitions="*, Auto">
-			<!-- Описание (занимает всё доступное пространство) -->
 			<ScrollViewer Grid.Row="0"
 						  VerticalScrollBarVisibility="Auto"
 						  Margin="0,0,0,0">
@@ -51,7 +47,6 @@
 						   HorizontalAlignment="Center"/>
 			</ScrollViewer>
 
-			<!-- Кнопки навигации (фиксированы внизу) -->
 			<Border Grid.Row="1"
 					Padding="10"
 					BorderThickness="0,1,0,0">
