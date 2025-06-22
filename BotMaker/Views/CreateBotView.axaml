@@ -11,98 +11,143 @@
 	</UserControl.DataContext>
 
 	<ScrollViewer>
-		<StackPanel Margin="10" Spacing="10">
+		<Grid Margin="20">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
 
-			<TextBlock Text="Введите ваш Telegram user_id:"/>
-			<TextBox Text="{Binding TelegramUserId, Mode=TwoWay}" Width="200"/>
-			<Button Content="Как получить свой user__id?"
-					Command="{Binding OpenUserIdInstructionCommand}"
+			<!-- Telegram User ID -->
+			<StackPanel Grid.Row="0" HorizontalAlignment="Center" Margin="0,0,0,20">
+				<TextBlock Text="Введите ваш Telegram user_id:" Margin="0,0,0,5"/>
+				<TextBox Text="{Binding TelegramUserId, Mode=TwoWay}" Width="300"/>
+				<Button Content="Как получить user_id?"
+						Command="{Binding OpenUserIdInstructionCommand}"
 					Background="Transparent" BorderThickness="0"
 					Foreground="#0078D7" Cursor="Hand"
 					HorizontalAlignment="Right"
 					VerticalAlignment="Top"
 					FontSize="10"/>
-
-			<TextBlock Text="Название вашей компании:"/>
-			<TextBox Text="{Binding CompanyName, Mode=TwoWay}" Width="300"/>
-
-			<!-- FAQ -->
-			<CheckBox Content="Добавить FAQ в бота?" IsChecked="{Binding AddFAQ}"/>
-			<StackPanel Spacing="5" Margin="5" IsVisible="{Binding AddFAQ}">
-				<StackPanel Orientation="Horizontal">
-					<TextBlock Text="Вопрос:"/>
-					<TextBox Width="200" Watermark="Вопрос" Text="{Binding Question, Mode=TwoWay}"/>
-				</StackPanel>
-				<StackPanel Orientation="Horizontal">
-					<TextBlock Text="Ответ:"/>
-					<TextBox Width="300" Watermark="Ответ" Text="{Binding Answer, Mode=TwoWay}"/>
-				</StackPanel>
-				<Button Content="Добавить вопрос-ответ" Command="{Binding AddFAQItemCommand}"/>
-				<ItemsControl ItemsSource="{Binding FAQ}">
-					<ItemsControl.ItemTemplate>
-						<DataTemplate>
-							<Border Classes="card">
-								<StackPanel>
-									<StackPanel Margin="0,5,0,0">
-										<TextBlock Text="{Binding Question, StringFormat='Вопрос: {0}'}"/>
-										<TextBlock Text="{Binding Answer, StringFormat='Ответ: {0}'}" Margin="0,2,0,0"/>
-										<Button Content="Удалить" Command="{Binding DataContext.RemoveFAQItemCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}" Margin="0,5,0,0"/>
-									</StackPanel>
-								</StackPanel>
-							</Border>
-						</DataTemplate>
-					</ItemsControl.ItemTemplate>
-				</ItemsControl>
 			</StackPanel>
 
-			<!-- Заказы -->
-			<CheckBox Content="Будут ли ваши клиенты делать заказы?" IsChecked="{Binding ClientsCanMakeOrders}"/>
-			<StackPanel Spacing="5" Margin="5" IsVisible="{Binding ClientsCanMakeOrders}">
-				<StackPanel Orientation="Horizontal">
-					<TextBlock Text="Название:"/>
-					<TextBox Width="200" Watermark="Название услуги/товара" Text="{Binding Name, Mode=TwoWay}"/>
-				</StackPanel>
-				<StackPanel Orientation="Horizontal">
-					<TextBlock Text="Описание:"/>
-					<TextBox Width="200" Watermark="Описание услуги/товара" Text="{Binding Description, Mode=TwoWay}"/>
-				</StackPanel>
-				<StackPanel Orientation="Horizontal">
-					<TextBlock Text="Стоимость:"/>
-					<NumericUpDown Minimum="0" Maximum="99999999.99" Increment="0.01" Value="{Binding Price}" Width="200"/>
-				</StackPanel>
-				<Button Content="Добавить услугу/товар" Command="{Binding AddServiceCommand}" IsVisible="{Binding ClientsMakeOrders}"/>
-				<ItemsControl ItemsSource="{Binding Services}">
-					<ItemsControl.ItemTemplate>
-						<DataTemplate>
-							<Border Classes="card" PointerEntered="OnPointerEnter" PointerExited="OnPointerLeave">
-								<StackPanel>
-									<StackPanel Name="CollapsedView" Orientation="Horizontal">
-										<TextBlock Text="{Binding Name, StringFormat='Название: {0}'}" Width="200"/>
-										<Button Content="Удалить" Command="{Binding DataContext.RemoveServiceCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}" Margin="10,0,0,0"/>
-									</StackPanel>
-
-									<StackPanel Name="ExpandedView" IsVisible="False" Margin="0,5,0,0">
-										<TextBlock Text="{Binding Name, StringFormat='Название: {0}'}"/>
-										<TextBlock Text="{Binding Description, StringFormat='Описание: {0}'}" Margin="0,2,0,0"/>
-										<TextBlock Text="{Binding Price, StringFormat='Цена: {0}'}" Margin="0,2,0,0"/>
-										<Button Content="Удалить" Command="{Binding DataContext.RemoveServiceCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}" Margin="0,5,0,0"/>
-									</StackPanel>
-								</StackPanel>
-							</Border>
-						</DataTemplate>
-					</ItemsControl.ItemTemplate>
-				</ItemsControl>
+			<!-- Company Name -->
+			<StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="0,0,0,20">
+				<TextBlock Text="Название вашей компании:" Margin="0,0,0,5"/>
+				<TextBox Text="{Binding CompanyName, Mode=TwoWay}" Width="300"/>
 			</StackPanel>
 
-			<!-- Остальные вопросы -->
-			<CheckBox Content="Чат-бот ведет базу клиентов" IsChecked="{Binding BotKeepsClientBase}"/>
-			<CheckBox Content="Отслеживать заказы в виде таблицы" IsChecked="{Binding TrackOrders}"/>
-			<CheckBox Content="Добавить поиск и фильтрацию заказов" IsChecked="{Binding EnableSearchFilter}"/>
-			<CheckBox Content="Добавить уведомления и напоминания" IsChecked="{Binding EnableNotifications}"/>
+			<!-- FAQ Section -->
+			<Border Grid.Row="2" BorderBrush="{DynamicResource BorderColor}" BorderThickness="0,1,0,0" Padding="0,10" Margin="0,0,0,20">
+				<StackPanel HorizontalAlignment="Center" Spacing="10">
+					<CheckBox Content="Добавить FAQ в бота?" IsChecked="{Binding AddFAQ}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-			<!-- Кнопка для генерации скрипта -->
-			<Button Content="Сгенерировать функционал для бота" HorizontalAlignment="Center" Margin="10" Command="{Binding GenerateScriptCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+					<StackPanel Spacing="10" Margin="10,10,10,0" IsVisible="{Binding AddFAQ}">
+						<Grid ColumnDefinitions="Auto,1*" RowDefinitions="Auto,Auto" VerticalAlignment="Center">
+							<TextBlock Text="Вопрос:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,5"/>
+							<TextBox Grid.Row="0" Grid.Column="1" Width="300" Watermark="Вопрос" Text="{Binding Question, Mode=TwoWay}"/>
 
-		</StackPanel>
+							<TextBlock Text="Ответ:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,5"/>
+							<TextBox Grid.Row="1" Grid.Column="1" Width="300" Watermark="Ответ" Text="{Binding Answer, Mode=TwoWay}"/>
+						</Grid>
+
+						<Button Content="Добавить вопрос-ответ" Command="{Binding AddFAQItemCommand}" HorizontalAlignment="Center"/>
+
+						<ItemsControl ItemsSource="{Binding FAQ}" Width="400" HorizontalAlignment="Center">
+							<ItemsControl.ItemTemplate>
+								<DataTemplate>
+									<Border Classes="card" Margin="0,5">
+										<StackPanel Margin="10">
+											<TextBlock Text="{Binding Question, StringFormat='Вопрос: {0}'}" FontWeight="Bold"/>
+											<TextBlock Text="{Binding Answer, StringFormat='Ответ: {0}'}" Margin="0,5,0,10"/>
+											<Button Content="Удалить"
+													Command="{Binding DataContext.RemoveFAQItemCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+													CommandParameter="{Binding}"
+													HorizontalAlignment="Right"/>
+										</StackPanel>
+									</Border>
+								</DataTemplate>
+							</ItemsControl.ItemTemplate>
+						</ItemsControl>
+					</StackPanel>
+				</StackPanel>
+			</Border>
+
+			<!-- Orders Section -->
+			<Border Grid.Row="3" BorderBrush="{DynamicResource BorderColor}" BorderThickness="0,1,0,0" Padding="0,10" Margin="0,0,0,20">
+				<StackPanel HorizontalAlignment="Center" Spacing="10">
+					<CheckBox Content="Клиенты могут делать заказы?" IsChecked="{Binding ClientsCanMakeOrders}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+					<StackPanel Spacing="10" Margin="10,10,10,0" IsVisible="{Binding ClientsCanMakeOrders}">
+						<Grid ColumnDefinitions="Auto,1*" RowDefinitions="Auto,Auto,Auto" VerticalAlignment="Center">
+							<TextBlock Text="Название:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,5"/>
+							<TextBox Grid.Row="0" Grid.Column="1" Width="300" Watermark="Название услуги/товара" Text="{Binding Name, Mode=TwoWay}"/>
+
+							<TextBlock Text="Описание:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,5"/>
+							<TextBox Grid.Row="1" Grid.Column="1" Width="300" Watermark="Описание услуги/товара" Text="{Binding Description, Mode=TwoWay}"/>
+
+							<TextBlock Text="Стоимость:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,5"/>
+							<NumericUpDown Grid.Row="2" Grid.Column="1" Width="300" Minimum="0" Maximum="99999999.99"
+										  Increment="0.01" Value="{Binding Price}"/>
+						</Grid>
+
+						<Button Content="Добавить услугу/товар" Command="{Binding AddServiceCommand}" HorizontalAlignment="Center"/>
+
+						<ItemsControl ItemsSource="{Binding Services}" Width="450" HorizontalAlignment="Center">
+							<ItemsControl.ItemTemplate>
+								<DataTemplate>
+									<Border Classes="card" Margin="0,5" Padding="10">
+										<StackPanel>
+											<StackPanel Name="CollapsedView" Orientation="Horizontal" HorizontalAlignment="Stretch">
+												<TextBlock Text="{Binding Name}" Width="250" TextTrimming="CharacterEllipsis"/>
+												<Button Content="Удалить"
+														Command="{Binding DataContext.RemoveServiceCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+														CommandParameter="{Binding}"
+														Margin="10,0,0,0"
+														HorizontalAlignment="Right"/>
+											</StackPanel>
+
+											<StackPanel Name="ExpandedView" IsVisible="False" Margin="0,5,0,0">
+												<TextBlock Text="{Binding Name, StringFormat='Название: {0}'}"/>
+												<TextBlock Text="{Binding Description, StringFormat='Описание: {0}'}" Margin="0,5,0,0"/>
+												<TextBlock Text="{Binding Price, StringFormat='Цена: {0} руб.'}" Margin="0,5,0,0"/>
+												<Button Content="Удалить"
+														Command="{Binding DataContext.RemoveServiceCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+														CommandParameter="{Binding}"
+														Margin="0,5,0,0"
+														HorizontalAlignment="Right"/>
+											</StackPanel>
+										</StackPanel>
+									</Border>
+								</DataTemplate>
+							</ItemsControl.ItemTemplate>
+						</ItemsControl>
+					</StackPanel>
+				</StackPanel>
+			</Border>
+
+			<!-- Additional Options -->
+			<StackPanel Grid.Row="4" HorizontalAlignment="Center" Spacing="10" Margin="0,0,0,20">
+				<TextBlock Text="Дополнительные опции:" FontWeight="Bold" HorizontalAlignment="Center"/>
+				<CheckBox Content="Чат-бот ведет базу клиентов" IsChecked="{Binding BotKeepsClientBase}" VerticalAlignment="Center"/>
+				<CheckBox Content="Отслеживать заказы в виде таблицы" IsChecked="{Binding TrackOrders}" VerticalAlignment="Center"/>
+				<CheckBox Content="Добавить поиск и фильтрацию заказов" IsChecked="{Binding EnableSearchFilter}" VerticalAlignment="Center"/>
+				<CheckBox Content="Добавить уведомления и напоминания" IsChecked="{Binding EnableNotifications}" VerticalAlignment="Center"/>
+			</StackPanel>
+
+			<!-- Generate Button -->
+			<Button Grid.Row="5" Content="Сгенерировать функционал для бота"
+					HorizontalAlignment="Center"
+					Margin="0,20"
+					Padding="20,10"
+					Command="{Binding GenerateScriptCommand}"
+					CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+		</Grid>
 	</ScrollViewer>
 </UserControl>

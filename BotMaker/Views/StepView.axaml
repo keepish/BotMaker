@@ -23,15 +23,12 @@
 
 			<Button Grid.Column="1"
 					Content="✕"
-					Foreground="Black"
-					BorderBrush="Gray"
 					Command="{Binding CloseInstructionCommand}"
 					HorizontalAlignment="Right"
 					VerticalAlignment="Center"
 					Width="40"
 					Height="40"
-					FontSize="16"
-					Background="Transparent"/>
+					FontSize="16"/>
 		</Grid>
 
 		<!-- Изображение -->
@@ -56,23 +53,17 @@
 
 			<!-- Кнопки навигации (фиксированы внизу) -->
 			<Border Grid.Row="1"
-					Background="White"
 					Padding="10"
-					BorderBrush="#DDD"
 					BorderThickness="0,1,0,0">
 				<StackPanel Orientation="Horizontal"
 							HorizontalAlignment="Center">
 					<Button Content="←"
-							Foreground="Black"
-							BorderBrush="Gray"
 							Command="{Binding PreviousStepCommand}"
 							IsEnabled="{Binding CanGoPrevious}"
 							Margin="0,0,10,0"
 							Width="80"/>
 
 					<Button Content="→"
-							Foreground="Black"
-							BorderBrush="Gray"
 							Command="{Binding NextStepCommand}"
 							IsEnabled="{Binding CanGoNext}"
 							Margin="10,0,0,0"

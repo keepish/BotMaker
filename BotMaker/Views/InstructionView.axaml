@@ -6,7 +6,7 @@
              xmlns:vm="clr-namespace:BotMaker.ViewModels"
              mc:Ignorable="d"
              x:Class="BotMaker.Views.InstructionView">
-	<Border BorderBrush="#DDD" BorderThickness="1" CornerRadius="8" Background="White" Padding="15" Width="600" Height="500">
+	<Border  BorderThickness="1" CornerRadius="8" Padding="15" Width="600" Height="500">
 		<Grid RowDefinitions="Auto,*">
 			<ProgressBar Grid.Row="0"
 						 Value="{Binding ProgressValue}"

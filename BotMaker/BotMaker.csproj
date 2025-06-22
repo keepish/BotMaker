@@ -19,6 +19,10 @@
 
 
 	<ItemGroup>
+		<AvaloniaResource Include="Assets\Fonts\Benzin-Bold.ttf" />
+	</ItemGroup>
+
+	<ItemGroup>
     <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
     <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
     <PackageReference Include="Avalonia.Fonts.Inter" Version="$(AvaloniaVersion)" />
@@ -40,6 +44,7 @@
     <AvaloniaResource Update="Assets\BusinessPoint.ico">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </AvaloniaResource>
+		
     <AvaloniaResource Update="Assets\Fonts\Benzin-Bold.ttf">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </AvaloniaResource>

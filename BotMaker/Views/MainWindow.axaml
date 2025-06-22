@@ -8,8 +8,8 @@
         x:Class="BotMaker.Views.MainWindow"
         Icon="/Assets/BusinessPoint.ico"
         Title="BusinessPoint"
-        Width="800"
-        Height="500"
+        Width="1200"
+        Height="550"
         WindowStartupLocation="CenterScreen">
 	<ContentControl x:Name="MainContent"/>
 </Window>

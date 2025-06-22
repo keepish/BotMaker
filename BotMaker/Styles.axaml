@@ -68,11 +68,17 @@
 		</Border>
 	</Design.PreviewWith>
 
+	<Style>
+		<Style.Resources>
+			<FontFamily x:Key="MainFont">avares://BotMaker/Assets/Fonts/Benzin-Bold.ttf#Benzin</FontFamily>
+		</Style.Resources>
+	</Style>
+	
 	<!-- Базовые стили -->
 	<Style Selector="Window">
 		<Setter Property="Background" Value="{DynamicResource BackgroundColor}"/>
 		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"/>
-		<Setter Property="FontFamily" Value="Segoe UI, Inter, Arial, sans-serif"/>
+		<Setter Property="FontFamily" Value="{DynamicResource MainFont}"/>
 		<Setter Property="FontSize" Value="15"/>
 	</Style>
 
@@ -90,7 +96,8 @@
 	</Style>
 
 	<Style Selector="Button:hover">
-		<Setter Property="Background" Value="{DynamicResource PrimaryLightColor}"/>
+		<Setter Property="Background" Value="{DynamicResource PrimaryColor}"/>
+		<Setter Property="Foreground" Value="{DynamicResource LightTextColor}"/>
 	</Style>
 
 	<Style Selector="Button:pressed">
@@ -113,6 +120,7 @@
 		<Setter Property="CornerRadius" Value="6"/>
 		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"/>
 		<Setter Property="SelectionBrush" Value="{DynamicResource PrimaryColor}40"/>
+		<Setter Property="TextAlignment" Value="Center"/>
 		<!-- 25% прозрачности -->
 	</Style>
 
@@ -125,11 +133,13 @@
 	<Style Selector="CheckBox">
 		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"/>
 		<Setter Property="FontWeight" Value="Normal"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+		<Setter Property="HorizontalContentAlignment" Value="Left"/>
+		<Setter Property="Padding" Value="5,0,0,0"/>
 	</Style>
 
 	<Style Selector="CheckBox:checked /template/ ContentPresenter">
-		<Setter Property="Background" Value="{DynamicResource PrimaryColor}"/>
-		<Setter Property="BorderBrush" Value="{DynamicResource PrimaryColor}"/>
+		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"/>
 	</Style>
 
 	<!-- Карточки -->
