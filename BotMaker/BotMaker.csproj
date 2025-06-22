@@ -37,6 +37,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+    <AvaloniaResource Update="Assets\BusinessPoint.ico">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </AvaloniaResource>
     <AvaloniaResource Update="Assets\Fonts\Benzin-Bold.ttf">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </AvaloniaResource>

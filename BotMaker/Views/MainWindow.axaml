@@ -6,7 +6,10 @@
         xmlns:views="clr-namespace:BotMaker.Views"
         mc:Ignorable="d"
         x:Class="BotMaker.Views.MainWindow"
-        Icon="/Assets/avalonia-logo.ico"
-        Title="BotMaker">
-    <ContentControl x:Name="MainContent"/>
+        Icon="/Assets/BusinessPoint.ico"
+        Title="BusinessPoint"
+        Width="800"
+        Height="500"
+        WindowStartupLocation="CenterScreen">
+	<ContentControl x:Name="MainContent"/>
 </Window>
