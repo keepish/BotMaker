@@ -10,7 +10,6 @@ namespace BotMaker.ViewModels
 {
     public partial class InstructionViewModel : ViewModelBase
     {
-
         private readonly INavigationService _navigation;
         public int ProgressValue => CurrentStepIndex + 1;
         public int ProgressMax => Steps.Count;
@@ -77,9 +76,27 @@ namespace BotMaker.ViewModels
                 {
                     Number = 6,
                     Title = "Получение ключа API",
-                    Description = "Поздравляем, вы успешно зарегистрировали нового бота, вставьте ключ HTTP API  в поле ввода в приложении BotMaker.",
+                    Description = "",
                     ImagePath = "Assets/Steps/step6.png"
                 }
+            };
+
+            var UserInfoSteps = new List<InstructionStep>
+            {
+                new ()
+                {
+                    Number = 1,
+                    Title = "Поиск userinfobot",
+                    Description = "В поисковой строке Telegram введите userinfobot, после чего перейдите в чат.",
+                    ImagePath = "Assets/Steps/user_info_step1.png"
+                },
+                new ()
+                {
+                    Number = 2,
+                    Title = "Запуск userinfobot",
+                    Description = "Запустите бота командой /start, в ответе вы увидите свой id.",
+                    ImagePath = "Assets/Steps/user_info_step2.png"
+                },
             };
         }
 

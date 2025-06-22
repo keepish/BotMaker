@@ -9,7 +9,16 @@
     <AvaloniaResource Include="Assets\**" />
   </ItemGroup>
 
-  <ItemGroup>
+
+
+	<ItemGroup>
+		<Content Include="Assets\Steps\*.png">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+
+	<ItemGroup>
     <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
     <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
     <PackageReference Include="Avalonia.Fonts.Inter" Version="$(AvaloniaVersion)" />

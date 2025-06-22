@@ -1,5 +1,7 @@
 ﻿using Avalonia.Controls;
 using BotMaker.Models;
+using BotMaker.Services;
+using BotMaker.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
@@ -12,12 +14,13 @@ namespace BotMaker.ViewModels
 {
     public partial class CreateBotViewModel : ViewModelBase
     {
+        private readonly INavigationService _navigation;
+
         [ObservableProperty]
         private string? _telegramUserId = null;
 
         [ObservableProperty]
         private string _companyName = "";
-
 
         [ObservableProperty]
         private bool _addFAQ = false;
@@ -160,7 +163,7 @@ if __name__ == ""__main__"":
         [RelayCommand]
         public void OpenUserIdInstruction()
         {
-
+            _navigation.NavigateTo<InstructionView>();
         }
     }
 }
