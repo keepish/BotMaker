@@ -4,43 +4,41 @@
 
 	<Style>
 		<Style.Resources>
-			<!-- Основная цветовая палитра -->
-			<Color x:Key="PrimaryColor">#4A6FA5</Color>
-			<!-- Успокаивающий синий -->
-			<Color x:Key="PrimaryLightColor">#6B8CBE</Color>
-			<!-- Светлее на 20% -->
-			<Color x:Key="PrimaryDarkColor">#3A5A8C</Color>
-			<!-- Темнее на 15% -->
+			<!-- Строгая монохромная палитра -->
+			<Color x:Key="PrimaryColor">#1A2A3A</Color>
+			<!-- Тёмный сине-угольный -->
+			<Color x:Key="PrimaryLightColor">#2C3E50</Color>
+			<Color x:Key="PrimaryDarkColor">#0D1B27</Color>
+			<!-- Почти черный -->
 
-			<Color x:Key="SecondaryColor">#6BBBA1</Color>
-			<!-- Мятно-бирюзовый -->
-			<Color x:Key="AccentColor">#FF7E5A</Color>
-			<!-- Теплый коралловый -->
+			<Color x:Key="SecondaryColor">#4A5C6A</Color>
+			<!-- Углубленный серый -->
+			<Color x:Key="AccentColor">#3E6D9C</Color>
+			<!-- Сдержанный синий -->
 
 			<!-- Текст и фон -->
-			<Color x:Key="PrimaryTextColor">#2D3748</Color>
-			<!-- Темно-серый/синий -->
+			<Color x:Key="PrimaryTextColor">#0D1B27</Color>
+			<!-- Глубокий черно-синий -->
 			<Color x:Key="SecondaryTextColor">#4A5568</Color>
-			<!-- Серый для второстепенного текста -->
-			<Color x:Key="LightTextColor">#FFFFFF</Color>
-			<!-- Белый для темного фона -->
+			<!-- Тёмный серый -->
+			<Color x:Key="LightTextColor">#F8FAFC</Color>
+			<!-- Чистый белый -->
 
-			<Color x:Key="BackgroundColor">#F8FAFC</Color>
-			<!-- Очень светлый серо-голубой -->
+			<Color x:Key="BackgroundColor">#F0F4F8</Color>
+			<!-- Ледяной серо-голубой -->
 			<Color x:Key="CardBackground">#FFFFFF</Color>
-			<!-- Чисто белый для карточек -->
-			<Color x:Key="BorderColor">#E2E8F0</Color>
-			<!-- Светлая серая рамка -->
+			<Color x:Key="BorderColor">#CBD5E0</Color>
+			<!-- Стальной серый -->
 
 			<!-- Состояния -->
-			<Color x:Key="SuccessColor">#48BB78</Color>
-			<!-- Зеленый для успеха -->
-			<Color x:Key="ErrorColor">#F56565</Color>
-			<!-- Мягкий красный -->
-			<Color x:Key="WarningColor">#ED8936</Color>
-			<!-- Оранжевый -->
-			<Color x:Key="InfoColor">#4299E1</Color>
-			<!-- Голубой -->
+			<Color x:Key="SuccessColor">#2D6A4F</Color>
+			<!-- Темный лесной зеленый -->
+			<Color x:Key="ErrorColor">#9B2C2C</Color>
+			<!-- Тёмный бордовый -->
+			<Color x:Key="WarningColor">#975A16</Color>
+			<!-- Темный охристый -->
+			<Color x:Key="InfoColor">#2C5282</Color>
+			<!-- Военно-морской синий -->
 		</Style.Resources>
 	</Style>
 

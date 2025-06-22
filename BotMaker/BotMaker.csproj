@@ -29,4 +29,16 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.6" />
     <PackageReference Include="Telegram.Bot" Version="22.5.1" />
   </ItemGroup>
+
+	<ItemGroup>
+		<Content Include="Assets\Steps\*.png">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+    <AvaloniaResource Update="Assets\Fonts\Benzin-Bold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </AvaloniaResource>
+  </ItemGroup>
 </Project>

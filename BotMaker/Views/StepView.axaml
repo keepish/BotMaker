@@ -42,7 +42,6 @@
 			   HorizontalAlignment="Center"
 			   VerticalAlignment="Center"
 			   Margin="0,0,0,20"/>
-
 		<!-- Область для описания и кнопок -->
 		<Grid Grid.Row="2" RowDefinitions="*, Auto">
 			<!-- Описание (занимает всё доступное пространство) -->
